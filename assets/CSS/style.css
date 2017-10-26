@@ -1,0 +1,15 @@
+#player-name {
+	width: 20%;
+}
+.gamerow {
+	margin-top: 1em;
+}
+.hidden {
+	visibility: hidden;
+}
+.chatRow {
+	margin-top: 1em;
+}
+.container {
+	margin-top: 3em;
+}

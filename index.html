@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>RPS-Multiplayer</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron text-center">
+        	<h1 class="text-center">Multi-player Rock Paper Scissors</h1>
+        	<h3 class="text-center">Do some stuff below!</h3>                
+            <button type="submit" id="start-game" class="btn btn-primary hidden">START</button>
+            <div class="row justify-content-center nameRow">
+                <input class="form-control" id="player-name" type="text" placeholder="Type Your Name">
+                <button type="submit" id="submit-name" class="btn btn-primary">Submit</button>
+
+            </div>
+
+    	</div>
+<!--     	<div class="row justify-content-center nameRow">
+    			<input class="form-control" id="player-name" type="text" placeholder="Type Your Name">
+    			<button type="submit" id="submit-name" class="btn btn-primary">Submit</button>
+		</div> -->
+
+   		<div class="row gamerow hidden">
+    		<div class="col-md-4 text-center" id="p1box">
+    			<div class="card">
+  					<div class="card-body">
+    				Player 1 Choice.
+    				<br>
+    				<p><button type="submit" id="rock" class="btn btn-primary p1">Rock</button></p>
+    				<p><button type="submit" id="paper" class="btn btn-primary p1">Paper</button></p>
+    				<p><button type="submit" id="scissors" class="btn btn-primary p1">Scissors</button></p>
+ 					</div>
+				</div>
+			</div>
+    		<div class="col-md-4 text-center" id="gamebox">
+    			<div class="card">
+  					<div class="card-body">
+                        <div class="col mx-auto" id="p1stats"></div>
+                        <div class="col mx-auto" id="p2stats"></div>
+    				
+ 					</div>
+				</div>
+    		</div>
+    		<div class="col-md-4 text-center" id="p2box">
+    			<div class="card">
+  					<div class="card-body">
+    				Player 2 Choice.
+    				<br>
+    				<p><button type="submit" id="rock" class="btn btn-primary p2">Rock</button></p>
+    				<p><button type="submit" id="paper" class="btn btn-primary p2">Paper</button></p>
+    				<p><button type="submit" id="scissors" class="btn btn-primary p2">Scissors</button></p>
+ 					</div>
+				</div>
+    		</div>
+    	</div>
+    	<div class="row card chatRow hidden">
+    		<div class="col-md-12 card-body text-center" id="chatbox"> CHATBOX GOES HERE </div>
+    	</div>
+	
+
+	<script src="assets/JS/rps.js"></script>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	</div>
+</body>
+</html>
