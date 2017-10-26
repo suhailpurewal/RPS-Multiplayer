@@ -28,6 +28,17 @@ var draw = 0;
 var name1 = "";
 var name2 = "Fred";
 
+ 	database.ref().set({
+    oneWin: oneWin,
+    oneLoss: oneLoss,
+    twoWin: twoWin,
+    twoLoss: twoLoss,
+    draw: draw,
+    name1: name1,
+    name2: name2,
+
+    });
+
 function startGame(){
 	$("#start-game").on("click", function() {
 		$(".jumbotron").slideUp();
@@ -39,6 +50,9 @@ function startGame(){
 function nameOne() {
 $("#submit-name").on("click", function() {
 	name1 = $("#player-name").val().trim()
+	database.ref().set({
+        name1: name1
+      });
 	console.log(name);
 	// $(".nameRow").addClass("hidden");
 		$("#start-game").removeClass("hidden");
@@ -49,6 +63,9 @@ $("#submit-name").on("click", function() {
 // function nametwo() {
 // $("#submit-name").on("click", function() {
 // 	name = $("#player-name").val().trim()
+      // database.ref().set({
+        // name2: name2
+      // });
 // 	console.log(name);
 // 	$(".nameRow").addClass("hidden");
 
@@ -59,6 +76,9 @@ function leftChoice() {
 $(".p1").on("click", function(){
 	placeholder1 = this.id;
 	console.log(placeholder1);
+	database.ref().set({
+        placeholder1: placeholder1
+      });
 	console.log("clicking button");
 	winCheck();
 	});
@@ -67,13 +87,20 @@ function righttChoice() {
 $(".p2").on("click", function(){
 	placeholder2 = this.id;
 	console.log(placeholder2);
+		database.ref().set({
+        placeholder2: placeholder2
+      });
 	console.log("clicking button");
 	winCheck();
 	});
 }
 function endRound() {
-	placeholder2 = undefined;
-	placeholder1 = undefined;
+	placeholder2 = "";
+	placeholder1 = "";
+	database.ref().set({
+        placeholder1: placeholder1,
+        placeholder2: placeholder2,
+      });
 }
 	
 function winCheck() {
@@ -83,6 +110,18 @@ function winCheck() {
 		draw++;
 		$("#p1stats").html(name1 + " <br> Wins: " + oneWin + " Losses: " + oneLoss + " Draws: " + draw);
 		$("#p2stats").html(name2 + " <br> Wins: " + twoWin + " Losses: " + twoLoss + " Draws: " + draw);
+	database.ref().set({
+    placeholder1: placeholder1,
+    placeholder2: placeholder2,
+    oneWin: oneWin,
+    oneLoss: oneLoss,
+    twoWin: twoWin,
+    twoLoss: twoLoss,
+    draw: draw,
+    name1: name1,
+    name2: name2,
+
+    });
 		endRound();
 		//update middle box to shgow tie
 		//update score
@@ -95,6 +134,18 @@ function winCheck() {
 		endRound();
 		$("#p1stats").html(name1 + " <br> Wins: " + oneWin + " Losses: " + oneLoss + " Draws: " + draw);
 		$("#p2stats").html(name2 + " <br> Wins: " + twoWin + " Losses: " + twoLoss + " Draws: " + draw);
+	database.ref().set({
+    placeholder1: placeholder1,
+    placeholder2: placeholder2,
+    oneWin: oneWin,
+    oneLoss: oneLoss,
+    twoWin: twoWin,
+    twoLoss: twoLoss,
+    draw: draw,
+    name1: name1,
+    name2: name2,
+
+    });
 		console.log("------p1 win " + oneWin);
 		console.log("------p1 loss " + oneLoss);
 		console.log("------p2 win " + twoWin);
@@ -110,6 +161,18 @@ function winCheck() {
 		endRound();
 		$("#p1stats").html(name1 + " <br> Wins: " + oneWin + " Losses: " + oneLoss + " Draws: " + draw);
 		$("#p2stats").html(name2 + " <br> Wins: " + twoWin + " Losses: " + twoLoss + " Draws: " + draw);
+	database.ref().set({
+    placeholder1: placeholder1,
+    placeholder2: placeholder2,
+    oneWin: oneWin,
+    oneLoss: oneLoss,
+    twoWin: twoWin,
+    twoLoss: twoLoss,
+    draw: draw,
+    name1: name1,
+    name2: name2,
+
+    });
 		console.log("------p1 win " + oneWin);
 		console.log("------p1 loss " + oneLoss);
 		console.log("------p2 win " + twoWin);
