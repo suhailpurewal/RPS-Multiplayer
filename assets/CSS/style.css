@@ -13,3 +13,7 @@
 .container {
 	margin-top: 3em;
 }
+#chatbox {
+	overflow-y: scroll;
+	height: 200px;
+}

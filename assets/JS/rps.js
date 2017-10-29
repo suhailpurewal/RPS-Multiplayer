@@ -13,6 +13,7 @@ console.log("JS is working");
   firebase.initializeApp(config);
 
 var database = firebase.database();
+var ref = database.ref("chat1");
 // var oneName;
 // var twoName;
 // var oneChoice;
@@ -27,6 +28,10 @@ var twoLoss = 0;
 var draw = 0;
 var name1 = "";
 var name2 = "Fred";
+var selectedOne = false;
+var selectedTwo = false;
+var chat1 = "";
+var chat2 = "";
 
  	database.ref().set({
     oneWin: oneWin,
@@ -36,8 +41,27 @@ var name2 = "Fred";
     draw: draw,
     name1: name1,
     name2: name2,
+    chat1: chat1,
+    chat2: chat2,
 
     });
+
+// ref.on("value", getData, errData)
+
+// function getData(data) {
+// 	console.log(data);
+	
+// }
+
+// function errData(err) {
+// 	console.log("Error!");
+// 	console.log(err);
+// }
+
+// getData();
+// errData();
+
+
 
 function startGame(){
 	$("#start-game").on("click", function() {
@@ -68,6 +92,7 @@ $("#submit-name").on("click", function() {
       // });
 // 	console.log(name);
 // 	$(".nameRow").addClass("hidden");
+// 	$(".nameRow").slideUp();
 
 // });
 // }
@@ -76,8 +101,10 @@ function leftChoice() {
 $(".p1").on("click", function(){
 	placeholder1 = this.id;
 	console.log(placeholder1);
+	selectedOne = true;
 	database.ref().set({
-        placeholder1: placeholder1
+        placeholder1: placeholder1,
+        selectedOne: selectedOne,
       });
 	console.log("clicking button");
 	winCheck();
@@ -87,8 +114,10 @@ function righttChoice() {
 $(".p2").on("click", function(){
 	placeholder2 = this.id;
 	console.log(placeholder2);
+	selectedTwo = true;
 		database.ref().set({
-        placeholder2: placeholder2
+        placeholder2: placeholder2,
+        selectedTwo: selectedTwo,
       });
 	console.log("clicking button");
 	winCheck();
@@ -97,10 +126,26 @@ $(".p2").on("click", function(){
 function endRound() {
 	placeholder2 = "";
 	placeholder1 = "";
+	selectedOne = false;
+	selectedTwo = false;
 	database.ref().set({
         placeholder1: placeholder1,
         placeholder2: placeholder2,
+        selectedOne: selectedOne,
+        selectedTwo: selectedTwo,
       });
+}
+
+function leftChat() {
+$("#send-button").on("click", function(){
+	chat1 = $("#chat").val().trim()
+		database.ref().set({
+        chat1: chat1,
+      });
+		$("#chat").val("");
+		$("#chatbox").append(name1 + ": " + chat1);
+		$("#chatbox").append("<br>");
+});
 }
 	
 function winCheck() {
@@ -120,6 +165,8 @@ function winCheck() {
     draw: draw,
     name1: name1,
     name2: name2,
+    selectedOne: selectedOne,
+    selectedTwo: selectedTwo,
 
     });
 		endRound();
@@ -144,12 +191,15 @@ function winCheck() {
     draw: draw,
     name1: name1,
     name2: name2,
+    selectedOne: selectedOne,
+    selectedTwo: selectedTwo,
+
 
     });
-		console.log("------p1 win " + oneWin);
-		console.log("------p1 loss " + oneLoss);
-		console.log("------p2 win " + twoWin);
-		console.log("------p2 loss " + twoLoss);
+		console.log("------p1 has won " + oneWin + " times");
+		console.log("------p1 has lost " + oneLoss + " times");
+		console.log("------p2 has won " + twoWin + " times");
+		console.log("------p2 has lost " + twoLoss + " times");
 		//update middle box to show player 1 wins
 		//update score
 	}
@@ -171,6 +221,9 @@ function winCheck() {
     draw: draw,
     name1: name1,
     name2: name2,
+    selectedOne: selectedOne,
+    selectedTwo: selectedTwo,
+
 
     });
 		console.log("------p1 win " + oneWin);
@@ -203,6 +256,7 @@ leftChoice();
 righttChoice();
 nameOne();
 startGame();
+leftChat();
 
 
 
