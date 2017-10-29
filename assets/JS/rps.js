@@ -128,7 +128,7 @@ function winCheck() {
 	}
 	//winning scenarios
 	else if((placeholder1 === "rock" && placeholder2 === "scissors") || (placeholder1 === "scissors" && placeholder2 === "paper") || (placeholder1 === "paper" && placeholder2 === "rock")) {
-		alert("player one wins!")
+		alert(name1 + " wins!")
 		oneWin++;
 		twoLoss++;
 		endRound();
@@ -155,7 +155,7 @@ function winCheck() {
 	}
 	//losing scenarios	
 	else if((placeholder2 === "rock" && placeholder1 === "scissors") || (placeholder2 === "scissors" && placeholder1 === "paper") || (placeholder2 === "paper" && placeholder1 === "rock")) {
-		alert("player two wins!")
+		alert(name2 + " wins!");
 		twoWin++;
 		oneLoss++;
 		endRound();
