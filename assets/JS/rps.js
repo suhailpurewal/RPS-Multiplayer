@@ -13,7 +13,7 @@ console.log("JS is working");
   firebase.initializeApp(config);
 
 var database = firebase.database();
-var ref = database.ref("chat1");
+var chatStore = database.ref("chat1");
 // var oneName;
 // var twoName;
 // var oneChoice;
@@ -46,20 +46,7 @@ var chat2 = "";
 
     });
 
-// ref.on("value", getData, errData)
 
-// function getData(data) {
-// 	console.log(data);
-	
-// }
-
-// function errData(err) {
-// 	console.log("Error!");
-// 	console.log(err);
-// }
-
-// getData();
-// errData();
 
 
 
@@ -139,14 +126,23 @@ function endRound() {
 function leftChat() {
 $("#send-button").on("click", function(){
 	chat1 = $("#chat").val().trim()
-		database.ref().set({
+		chatStore.push({
         chat1: chat1,
+        time: firebase.database.ServerValue.TIMESTAMP,
+        
       });
-		$("#chat").val("");
-		$("#chatbox").append(name1 + ": " + chat1);
-		$("#chatbox").append("<br>");
+	chatStore.orderByChild("time").on("child_added", function(snapshot) {
+		snapshot.val()
+		console.log(snapshot.val())
+		// append with snapshot.val.chat1
+	});
+
+		// $("#chat").val("");
+		// $("#chatbox").append(name1 + ": " + chat1);
+		// $("#chatbox").append("<br>");
 });
 }
+// do the same for right chat
 	
 function winCheck() {
 	/// tie scenario
@@ -268,3 +264,9 @@ leftChat();
 
 
 });
+
+// use .push on second instances of db stuff
+//snapshot and child - lets you view last stored doc
+// two parts - oen for game and one for chat
+// store game obj in seperate from root obj
+// CRUD - create read update delete
